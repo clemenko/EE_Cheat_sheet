@@ -55,6 +55,7 @@ echo "fs.inotify.max_user_instances=8192" >> /etc/sysctl.conf # monitor file sys
 echo "fs.inotify.max_user_watches=1048576" >> /etc/sysctl.conf # monitor file system events
 sysctl -p
 ```
+Details on all of these items available [here](tuning.md)
 
 [Daemon Tuning](https://github.com/clemenko/best_practices#daemon-)
 
