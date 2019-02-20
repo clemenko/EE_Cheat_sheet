@@ -64,10 +64,70 @@ echo -e "{\n \"selinux-enabled\": true, \n \"log-driver\": \"json-file\", \"log-
  systemctl restart docker
  ```
 
+## Offline UCP/DTR images
+
+Download Offline tar balls.
+[UCP Offline](https://docs.docker.com/ee/ucp/admin/install/install-offline/#versions-available)
+[DTR Offline](https://docs.docker.com/ee/dtr/admin/install/install-offline/#versions-available)
+
+Once downloaded, then load the images on the nodes that need it.
+
+```bash
+docker load < ucp.tar.gz #all nodes
+docker load < dtr.tar.gz #on only DTR nodes
+```
+
 ## Install UCP
+
+[UCP Install Docs](https://docs.docker.com/ee/ucp/admin/install/#step-4-install-ucp)
+
+```bash
+docker container run --rm -it --name ucp \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  docker/ucp:3.1.2 install \
+  --host-address <node-ip-address> \
+  --interactive
+```
 
 ## Configure UCP
 
+Configure UCP with License, External Certs, and LDAP/AD before adding any new managers or worker nodes.
+
+* [Licensing UCP](https://docs.docker.com/ee/ucp/admin/configure/license-your-installation/)
+* [Adding External Certs](https://docs.docker.com/ee/ucp/admin/configure/use-your-own-tls-certificates/)
+* [Configuring LDAP](https://docs.docker.com/ee/ucp/admin/configure/external-auth/)
+* [Setup High Availability](https://docs.docker.com/ee/ucp/admin/configure/join-nodes/)
+
 ## Join Nodes to Cluster
 
+[Joining Nodes](https://docs.docker.com/ee/ucp/admin/configure/join-nodes/join-linux-nodes-to-cluster/)
+
+## Custom Load Balancer for HA
+
+If you can't use a Netscaler, ELB, or F5. [Set up a custom LB](https://docs.docker.com/ee/ucp/admin/configure/join-nodes/use-a-load-balancer/).
+
 ## Install Docker Trusted Registry
+
+The DTR install script can be generated from UCP. [UCP settings for installing DTR](https://docs.docker.com/ee/dtr/admin/install/#step-3-install-dtr).
+
+Please note that `ucp-node` is the name of the worker where to install DTR. Specifically its the node name that UCP knows. Example install command.
+
+```bash
+docker run -it --rm \
+  docker/dtr:2.6.2 install \
+  --ucp-node <ucp-node-name> \
+  --ucp-insecure-tls
+```
+
+## Configure DTR
+
+Configure DTR before adding new replicas.
+
+* [Add External Certs](https://docs.docker.com/ee/dtr/admin/configure/use-your-own-tls-certificates/)
+* [Add S3 External Storage](https://docs.docker.com/ee/dtr/admin/configure/external-storage/s3/)
+* [Add NFS External Storage](https://docs.docker.com/ee/dtr/admin/configure/external-storage/nfs/)
+* [Setup a Custom Load Balancer](https://docs.docker.com/ee/dtr/admin/configure/use-a-load-balancer/)
+
+## Add DTR Replicas
+
+Please note about only having odd number DTR servers. [Join DTR Replicas](https://docs.docker.com/ee/dtr/admin/configure/set-up-high-availability/#join-more-dtr-replicas)
