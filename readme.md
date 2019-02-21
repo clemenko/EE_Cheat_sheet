@@ -28,7 +28,7 @@ Example url for getting the YUM repo file `https://storebits.docker.com/ee/rhel/
 
 Make sure to **DOWNLOAD** at least the License and CVE file.
 
-## Install Docker EE Engine
+## Install Docker EE Engine (All Nodes)
 
 If you are online follow the [Centos Engine Install docs](https://docs.docker.com/install/linux/docker-ee/centos/#set-up-the-repository).
 
@@ -38,7 +38,7 @@ If you are offline, download the RPMs to the node or setup a local http/nfs repo
 yum install -y docker-ee-18.09.2-3.el7.x86_64.rpm docker-ee-cli-18.09.2-3.el7.x86_64.rpm containerd.io-1.2.2-3.3.el7.x86_64.rpm
 ```
 
-## Tune Docker EE Engine
+## Tune Docker EE Engine (All Nodes)
 
 [Kernel Tuning](https://github.com/clemenko/best_practices#kernel)
 
@@ -57,7 +57,7 @@ sysctl -p
 ```
 Details on all of these items available [here](tuning.md)
 
-[Daemon Tuning](https://github.com/clemenko/best_practices#daemon-)
+[Daemon Tuning Recommendations](https://github.com/clemenko/best_practices#daemon-)
 
 ```bash
 docker plugin disable docker/telemetry:1.0.0.linux-x86_64-stable
@@ -78,7 +78,7 @@ docker load < ucp.tar.gz #all nodes
 docker load < dtr.tar.gz #on only DTR nodes
 ```
 
-## Install UCP
+## Install UCP (First UCP Node)
 
 [UCP Install Docs](https://docs.docker.com/ee/ucp/admin/install/#step-4-install-ucp)
 
@@ -90,7 +90,7 @@ docker container run --rm -it --name ucp \
   --interactive
 ```
 
-## Configure UCP
+## Configure UCP (First UCP Node)
 
 Configure UCP with License, External Certs, and LDAP/AD before adding any new managers or worker nodes.
 
@@ -99,7 +99,7 @@ Configure UCP with License, External Certs, and LDAP/AD before adding any new ma
 * [Configuring LDAP](https://docs.docker.com/ee/ucp/admin/configure/external-auth/)
 * [Setup High Availability](https://docs.docker.com/ee/ucp/admin/configure/join-nodes/)
 
-## Join Nodes to Cluster
+## Join Nodes to Cluster (All other nodes)
 
 [Joining Nodes](https://docs.docker.com/ee/ucp/admin/configure/join-nodes/join-linux-nodes-to-cluster/)
 
@@ -107,7 +107,7 @@ Configure UCP with License, External Certs, and LDAP/AD before adding any new ma
 
 If you can't use a Netscaler, ELB, or F5. [Set up a custom LB](https://docs.docker.com/ee/ucp/admin/configure/join-nodes/use-a-load-balancer/).
 
-## Install Docker Trusted Registry
+## Install Docker Trusted Registry (First DTR Node)
 
 The DTR install script can be generated from UCP. [UCP settings for installing DTR](https://docs.docker.com/ee/dtr/admin/install/#step-3-install-dtr).
 
@@ -120,7 +120,7 @@ docker run -it --rm \
   --ucp-insecure-tls
 ```
 
-## Configure DTR
+## Configure DTR (First DTR Node)
 
 Configure DTR before adding new replicas.
 
@@ -129,6 +129,6 @@ Configure DTR before adding new replicas.
 * [Add NFS External Storage](https://docs.docker.com/ee/dtr/admin/configure/external-storage/nfs/)
 * [Setup a Custom Load Balancer](https://docs.docker.com/ee/dtr/admin/configure/use-a-load-balancer/)
 
-## Add DTR Replicas
+## Add DTR Replicas  (Additional DTR Nodes)
 
 Please note about only having odd number DTR servers. [Join DTR Replicas](https://docs.docker.com/ee/dtr/admin/configure/set-up-high-availability/#join-more-dtr-replicas)
