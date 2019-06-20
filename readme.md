@@ -83,11 +83,9 @@ docker load < dtr.tar.gz #on only DTR nodes
 [UCP Install Docs](https://docs.docker.com/ee/ucp/admin/install/#step-4-install-ucp)
 
 ```bash
-docker container run --rm -it --name ucp \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  docker/ucp:3.1.2 install \
-  --host-address <node-ip-address> \
-  --interactive
+docker container run --rm -it --name ucp --security-opt label=disable \
+  -v /var/run/docker.sock:/var/run/docker.sock docker/ucp:3.1.2 install \
+  --host-address <node-ip-address> --interactive
 ```
 
 ## Configure UCP (First UCP Node)
@@ -114,10 +112,7 @@ The DTR install script can be generated from UCP. [UCP settings for installing D
 Please note that `ucp-node` is the name of the worker where to install DTR. Specifically its the node name that UCP knows. Example install command.
 
 ```bash
-docker run -it --rm \
-  docker/dtr:2.6.2 install \
-  --ucp-node <ucp-node-name> \
-  --ucp-insecure-tls
+docker run -it --rm docker/dtr:2.6.2 install --ucp-node <ucp-node-name> --ucp-insecure-tls
 ```
 
 ## Configure DTR (First DTR Node)
