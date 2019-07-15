@@ -33,7 +33,7 @@ Make sure to **DOWNLOAD** at least the License and CVE file.
 If you are online follow the [Centos Engine Install docs](https://docs.docker.com/install/linux/docker-ee/centos/#set-up-the-repository). Here is an example for Centos. Replace the storebits url with the one associated with your account.
 
 ```bash
-export ee_url=
+export ee_url=https://storebits.docker.com/ee/rhel/sub-...
 yum update -y; yum install -y yum-utils; echo $ee_url/centos > /etc/yum/vars/dockerurl; \
 echo "7" > /etc/yum/vars/dockerosversion; \
 yum-config-manager --add-repo $(cat /etc/yum/vars/dockerurl)/docker-ee.repo; \
