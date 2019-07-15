@@ -131,7 +131,7 @@ docker load < dtr.tar.gz #on only DTR nodes
 
 ```bash
 docker container run --rm -it --name ucp --security-opt label=disable \
-  -v /var/run/docker.sock:/var/run/docker.sock docker/ucp:3.1.2 install \
+  -v /var/run/docker.sock:/var/run/docker.sock docker/ucp install \
   --host-address <node-ip-address> --interactive
 ```
 
