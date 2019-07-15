@@ -34,7 +34,11 @@ If you are online follow the [Centos Engine Install docs](https://docs.docker.co
 
 ```bash
 export ee_url=
-yum update -y; yum install -y yum-utils; echo $ee_url/centos > /etc/yum/vars/dockerurl; echo "7" > /etc/yum/vars/dockerosversion; yum-config-manager --add-repo $(cat /etc/yum/vars/dockerurl)/docker-ee.repo; yum makecache fast; yum-config-manager --enable docker-ee-stable; yum -y install docker-ee; systemctl start docker; systemctl enable docker
+yum update -y; yum install -y yum-utils; echo $ee_url/centos > /etc/yum/vars/dockerurl; \
+echo "7" > /etc/yum/vars/dockerosversion; \
+yum-config-manager --add-repo $(cat /etc/yum/vars/dockerurl)/docker-ee.repo; \
+yum makecache fast; yum-config-manager --enable docker-ee-stable; \
+yum -y install docker-ee; systemctl start docker; systemctl enable docker
 ```
 
 If you are offline, download the RPMs to the node or setup a local http/nfs repo. OR local install with:
