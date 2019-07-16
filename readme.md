@@ -4,6 +4,10 @@
 
 ![HA](./img/DDC_HA.jpg)
 
+## Watch the Video
+
+Feel free to watch the [Install Video](https://youtu.be/kpAsMcckpdk)
+
 ## Get a Trial License
 
 30 day trial : [https://hub.docker.com/search/?q=&type=edition&offering=enterprise&operating_system=linux](https://hub.docker.com/search/?q=&type=edition&offering=enterprise&operating_system=linux)
