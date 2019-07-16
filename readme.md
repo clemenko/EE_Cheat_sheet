@@ -178,3 +178,11 @@ Configure DTR before adding new replicas.
 ## Add DTR Replicas  (Additional DTR Nodes)
 
 Please note about only having odd number DTR servers. [Join DTR Replicas](https://docs.docker.com/ee/dtr/admin/configure/set-up-high-availability/#join-more-dtr-replicas)
+
+## Next Steps
+
+Consider automating the node creation process. When creating my demo environments on [Digital Ocean](https://www.digitalocean.com/) I use this [script](https://github.com/clemenko/ucp). Take a look and pay attention to the orders of operation. 
+
+And feel free to reach out to me at [clemenko@docker.com](mailto:clemenko@docker.com) or twitter @clemenko. 
+
+Thanks.
