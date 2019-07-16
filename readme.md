@@ -163,7 +163,7 @@ The DTR install script can be generated from UCP. [UCP settings for installing D
 Please note that `ucp-node` is the name of the worker where to install DTR. Specifically its the node name that UCP knows. Example install command.
 
 ```bash
-docker run -it --rm docker/dtr:2.6.2 install --ucp-node <ucp-node-name> --ucp-insecure-tls
+docker run -it --rm docker/dtr install --ucp-node <ucp-node-name> --ucp-insecure-tls
 ```
 
 ## Configure DTR (First DTR Node)
