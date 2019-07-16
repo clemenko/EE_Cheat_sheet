@@ -1,10 +1,10 @@
-# Docker EE Install Cheat Sheet
+# Docker Enterprise Install Cheat Sheet
 
 ## Production Ready Cluster
 
 ![HA](./img/DDC_HA.jpg)
 
-## Get a Trial
+## Get a Trial License
 
 30 day trial : [https://hub.docker.com/search/?q=&type=edition&offering=enterprise&operating_system=linux](https://hub.docker.com/search/?q=&type=edition&offering=enterprise&operating_system=linux)
 
@@ -19,7 +19,7 @@ Make sure the ports are open between ALL nodes.
 
 * [Docker UCP System Requirements](https://docs.docker.com/ee/ucp/admin/install/system-requirements/)
 
-## Get Docker EE RPMS, License, and Offline CVE
+## Get Docker Enterprise Engine RPMS, License, and Offline CVE
 
 Get RPMS from your **PRIVATE** storebits url. The url location is located on [hub.docker.com](https://hub.docker.com/) under "My Content". Example url https://hub.docker.com/u/$HUB_ID/content. Then click "Setup".
 
@@ -32,7 +32,7 @@ Example url for getting the YUM repo file `https://storebits.docker.com/ee/rhel/
 
 Make sure to **DOWNLOAD** at least the License and CVE file.
 
-## Install Docker EE Engine (All Nodes)
+## Install Docker Enterprise Engine (All Nodes)
 
 If you are online follow the [Centos Engine Install docs](https://docs.docker.com/install/linux/docker-ee/centos/#set-up-the-repository). Here is an example for Centos. Replace the storebits url with the one associated with your account.
 
@@ -51,7 +51,7 @@ If you are offline, download the RPMs to the node or setup a local http/nfs repo
 yum install -y docker-ee-18.09.2-3.el7.x86_64.rpm docker-ee-cli-18.09.2-3.el7.x86_64.rpm containerd.io-1.2.2-3.3.el7.x86_64.rpm
 ```
 
-## Tune Kernel and Docker EE Engine (All Nodes)
+## Tune Kernel and Docker Enterprise Engine (All Nodes)
 
 [Kernel Tuning](https://github.com/clemenko/best_practices#kernel)
 
