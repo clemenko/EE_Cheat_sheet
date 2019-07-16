@@ -1,5 +1,9 @@
 # Docker EE Install Cheat Sheet
 
+## Production Ready Cluster
+
+![HA](./img/DDC_HA.jpg)
+
 ## Get a Trial
 
 30 day trial : [https://hub.docker.com/search/?q=&type=edition&offering=enterprise&operating_system=linux](https://hub.docker.com/search/?q=&type=edition&offering=enterprise&operating_system=linux)
@@ -47,7 +51,7 @@ If you are offline, download the RPMs to the node or setup a local http/nfs repo
 yum install -y docker-ee-18.09.2-3.el7.x86_64.rpm docker-ee-cli-18.09.2-3.el7.x86_64.rpm containerd.io-1.2.2-3.3.el7.x86_64.rpm
 ```
 
-## Tune Docker EE Engine (All Nodes)
+## Tune Kernel and Docker EE Engine (All Nodes)
 
 [Kernel Tuning](https://github.com/clemenko/best_practices#kernel)
 
