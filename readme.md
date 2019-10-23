@@ -42,6 +42,7 @@ If you are online follow the [Centos Engine Install docs](https://docs.docker.co
 
 ```bash
 export ee_url=https://storebits.docker.com/ee/rhel/sub-...
+
 yum update -y; yum install -y yum-utils; echo $ee_url/centos > /etc/yum/vars/dockerurl; \
 echo "7" > /etc/yum/vars/dockerosversion; \
 yum-config-manager --add-repo $(cat /etc/yum/vars/dockerurl)/docker-ee.repo; \
@@ -137,10 +138,14 @@ docker load < dtr.tar.gz #on only DTR nodes
 
 [UCP Install Docs](https://docs.docker.com/ee/ucp/admin/install/#step-4-install-ucp)
 
+Please change the <node-ip-address> to the front facing network of the node.
+
 ```bash
+export ucp_ip=<node-ip-address>
+
 docker container run --rm -it --name ucp --security-opt label=disable \
   -v /var/run/docker.sock:/var/run/docker.sock docker/ucp install \
-  --host-address <node-ip-address> --interactive
+  --host-address $ucp_ip --interactive
 ```
 
 ## Configure UCP (First UCP Node)
