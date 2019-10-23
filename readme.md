@@ -141,7 +141,7 @@ docker load < dtr.tar.gz #on only DTR nodes
 Please change the <node-ip-address> to the front facing network of the node.
 
 ```bash
-export ucp_ip=<node-ip-address>
+export ucp_ip=$(hostname -I | awk '{print $1}')
 
 docker container run --rm -it --name ucp --security-opt label=disable \
   -v /var/run/docker.sock:/var/run/docker.sock docker/ucp install \
