@@ -117,9 +117,10 @@ Details on all of these items available [here](tuning.md)
 [Daemon Tuning Recommendations](https://github.com/clemenko/best_practices#daemon-)
 
 ```bash
+mkdir /etc/docker
 echo -e "{\n \"selinux-enabled\": true, \n \"log-driver\": \"json-file\", \"log-opts\": {\"max-size\": \"10m\", \"max-file\": \"3\"} \n}" > /etc/docker/daemon.json
- systemctl restart docker
- ```
+systemctl restart docker
+```
 
 ## Offline UCP/DTR images
 
