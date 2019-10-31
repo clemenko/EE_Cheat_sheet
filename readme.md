@@ -182,6 +182,7 @@ docker run -it --rm docker/dtr install --ucp-node $ucp_node --ucp-insecure-tls
 
 Configure DTR before adding new replicas.
 
+* [Enable CVE Scanning](https://docs.docker.com/ee/dtr/admin/configure/set-up-vulnerability-scans/)
 * [Add External Certs](https://docs.docker.com/ee/dtr/admin/configure/use-your-own-tls-certificates/)
 * [Add S3 External Storage](https://docs.docker.com/ee/dtr/admin/configure/external-storage/s3/)
 * [Add NFS External Storage](https://docs.docker.com/ee/dtr/admin/configure/external-storage/nfs/)
